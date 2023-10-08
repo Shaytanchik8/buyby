@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class BuybyApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(BuybyApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BuybyApplication.class, args);
+    }
 
 }
