@@ -29,7 +29,7 @@ public class Product {
     private String city;
     @Column(name = "author")
     private String author;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,
             mappedBy = "product")
     private List<Image> images = new ArrayList<>();
     private Long previewImageId;
