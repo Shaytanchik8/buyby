@@ -19,7 +19,7 @@
     <a href="/login">Войти</a></h1>
 </#if>
 <hr>
-<h4>Товары со всей России</h4>
+<h4>Товары</h4>
 <form action="/" method="get">
     Поиск по названию объявления: <input type="text" name="title">
     <input type="submit" value="Поиск"/>
