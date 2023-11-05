@@ -4,7 +4,8 @@
     <title>BUYSELL</title>
 </head>
 <body>
-<h1>BUYSELL</h1><hr>
+<h1>BUYSELL</h1>
+<hr>
 <h4>Подробная информация о товаре</h4>
 <#list images as img>
     <img src="/images/${img.id}" height="60px"/><br><br>
