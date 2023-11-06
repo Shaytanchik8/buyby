@@ -319,6 +319,8 @@ a {
   margin: 3%;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-row-start: 2;
+  grid-row-end: 3;
 
 }
 .product_info-container {

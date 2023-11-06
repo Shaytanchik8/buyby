@@ -75,7 +75,7 @@
             </div>
             <div class="product_info-item">
                 <div class="product_info-title"> Автор: </div>
-                <div class="product_info-text"> ${product.user.name} </div>
+                <div class="product_info-text"> <a href="/user/${product.user.id}"> ${product.user.name} </a> </div>
                 <div class="product_info-line"></div>
             </div>
             <div class="product_info-item">

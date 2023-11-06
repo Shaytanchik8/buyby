@@ -1,5 +1,6 @@
 package com.example.buyby.services;
 
+import com.example.buyby.models.Product;
 import com.example.buyby.models.User;
 import com.example.buyby.models.enums.Role;
 import com.example.buyby.repositories.UserRepository;
@@ -33,6 +34,9 @@ public class UserService {
         log.info("Saving new User with email: {}", userEmail);
         userRepository.save(user);
         return true;
+    }
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
     }
 
     public List<User> list(){

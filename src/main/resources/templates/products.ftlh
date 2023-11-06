@@ -26,7 +26,7 @@
     <#if user.email??>
     <form class="user" action="/logout" method="post">
         <input type="submit" value="" class="user_page" id="user_button">
-        <a href="/user" class="user_name">${user.name}</a>
+        <a href="/user/${user.id}" class="user_name">${user.name}</a>
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <input class="header_button" type="submit" value="Выйти" />
     </form>
