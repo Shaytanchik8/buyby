@@ -35,6 +35,12 @@ public class UserService {
         userRepository.save(user);
         return true;
     }
+
+    public void saveUser(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+    }
+
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }

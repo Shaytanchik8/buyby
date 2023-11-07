@@ -21,23 +21,24 @@
     <#--<form class="search" action="/" method="get">
         <input type="text" name="title" value="Поиск" class="search_input">
         <input type="submit" value="" class="search_button">
-    <#--</form>&ndash;&gt;
-    <#if user.email??>
+    <#--</form>&ndash;&gt; -->
+    <#if user_log.email??>
+
         <form class="user" action="/logout" method="post">
             <input type="submit" value="" class="user_page" id="user_button">
-            <a href="/user" class="user_name">${user.name}</a>
+            <a href="/user/${user_log.id}" class="user_name">${user_log.name}</a>
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input class="header_button" type="submit" value="Выйти" />
         </form>
-   &lt;#&ndash; &lt;#&ndash; <#if user.isAdmin()>
+  <#-- &lt;#&ndash; &lt;#&ndash; <#if user.isAdmin()>
          <a href="/admin">Панель администратора</a>
-     </#if>&ndash;&gt;&ndash;&gt;
+     </#if>&ndash;&gt;&ndash;&gt;-->
     <#else>
         <div class="user">
             <div class="header_button"><a class="header_button-text" href="/login">Войти</a></h1>
             </div>
         </div>
-    </#if>-->
+    </#if>
     <div class="line_logo"></div>
 </header>
 
@@ -63,18 +64,23 @@
                 <div class="product_info-line"></div>
             </div>
         </div>
-        <#if user.email??>
-            <form class="user" action="/logout" method="post">
-                <input class="header_button" type="submit" value="Редактировать" />
-            </form>
+
+        <#if user_log.email?? && user_log.email == user.email>
+                <button class="add_product"> <a id="add_product" href="/user/${user.id}/edit"> Редактировать </a></button>
+            <#--добавить страницу редактирвоания информации-->
         </#if>
     </div>
 </div>
 
-    <div class="another_products-title"> Товары пользователя ${user.name} </div>
-<form class="user" action="/logout" method="post">
-    <input class="header_button" type="submit" value="Редактировать" />
-</form>
+<#if user_log.email?? && user_log.email == user.email >
+    <div class="another_products-title">
+        <div class="my_product"> Мои товары </div>
+        <button class="add_product"> <a id="add_product" href="/user/${user_log.id}/product/create"> Добавить товар </a></button>
+    </div>
+<#else >
+    <div class="my_product"> Товары пользователя ${user.name} </div>
+
+</#if>
     <div class="line_logo"></div>
 
 

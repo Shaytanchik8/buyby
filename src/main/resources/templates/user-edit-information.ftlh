@@ -19,39 +19,40 @@
 
 <header>
     <div class="logo">buyBY</div>
-    <form class="search" action="/" method="get">
-        <input type="text" name="title" value="Поиск" class="search_input">
-        <input type="submit" value="" class="search_button">
-    </form>
     <#if user_log.email??>
+
         <form class="user" action="/logout" method="post">
             <input type="submit" value="" class="user_page" id="user_button">
             <a href="/user/${user_log.id}" class="user_name">${user_log.name}</a>
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input class="header_button" type="submit" value="Выйти" />
         </form>
-<#--    &lt;#&ndash; &lt;#&ndash; <#if user.isAdmin()>
-          <a href="/admin">Панель администратора</a>
-      </#if>&ndash;&gt;&ndash;&gt;-->
+    <#-- &lt;#&ndash; &lt;#&ndash; <#if user.isAdmin()>
+           <a href="/admin">Панель администратора</a>
+       </#if>&ndash;&gt;&ndash;&gt;-->
+    <#else>
+        <div class="user">
+            <div class="header_button"><a class="header_button-text" href="/login">Войти</a></h1>
+            </div>
+        </div>
     </#if>
     <div class="line_logo"></div>
 </header>
+
 <body>
 <div class="form_message">
-    <h1 class="form_title"> Создать новый товар </h1>
-    <form class="form_registration" action="/product/create_post" method="post"  enctype="multipart/form-data">
-        Название объявления: <input type="text" name="title"/>
-        Описание объявления: <input type="text" name="description"/>
-        Цена: <input type="number" name="price"/>
-        Город: <input type="text" name="city"/>
-        Первая фотография: <input type="file" name="file1"/>
-        Вторая фотография: <input type="file" name="file2"/>
-        Третья фотография: <input type="file" name="file3"/>
+    <h1 class="form_title"> Регистрация </h1>
+    <form class="form_registration" action="/user/${user.id}/edit_post" method="post">
+        Имя пользователя: <input type="text" name="name" value="${user.name}">
+        Эл. почта: <input type="email" name="email" value="${user.email}">
+        Номер телефона: <input type="text" name="phoneNumber" value="${user.phoneNumber}">
+        Новый пароль: <input type="password" name="password" value="${user.password}">  <#--Можно добавить старый и новый пароль, с проверкой на совпадение-->
         <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input class="button_form" type="submit" value="Добавить товар" />
+        <input class="button_form" type="submit" value="Сохранить" />
     </form>
 </div>
-
-
+<#if errorMessage??>
+    <h2 style="color: red">${errorMessage}</h2>
+</#if>
 </body>
 </html>

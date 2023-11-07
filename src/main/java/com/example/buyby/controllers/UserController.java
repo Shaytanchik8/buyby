@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 
 @Controller
@@ -38,13 +41,29 @@ public class UserController {
         return "redirect:/login";
     }
 
-
     @GetMapping("user/{id}")
     public String userInfo( @PathVariable Long id, Principal principal, Model model){
+        model.addAttribute("user_log", productService.getUserByPrincipal(principal));
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         model.addAttribute("products", user.getProducts());
         return "user-info";
+    }
+
+    @GetMapping("user/{id}/edit")
+    public String infoEditUser(@PathVariable Long id, Principal principal, Model model) {
+        model.addAttribute("user_log", productService.getUserByPrincipal(principal));
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "user-edit-information";
+    }
+
+    @PostMapping("user/{id}/edit_post")
+    public String editUser(User user, Principal principal, Model model) throws IOException {
+        userService.saveUser(user);
+
+        model.addAttribute("user", productService.getUserByPrincipal(principal));
+        return "redirect:/";
     }
 
 }

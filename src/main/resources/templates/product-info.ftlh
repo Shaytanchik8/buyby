@@ -26,7 +26,8 @@
     <#if user.email??>
         <form class="user" action="/logout" method="post">
             <input type="submit" value="" class="user_page" id="user_button">
-            <a href="/user" class="user_name">${user.name}</a>
+            <a href="/user/${user.id}" class="user_name">${user.name}</a>
+
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <input class="header_button" type="submit" value="Выйти" />
         </form>
@@ -45,7 +46,7 @@
 
 <body>
 <div class="form_message" id="info">
-    <h1 class="form_title" id="product_info-title"> Регистрация </h1>
+    <h1 class="form_title" id="product_info-title"> Информация о товаре </h1>
     <div class="form_info-container">
         <div class="slider">
             <div class="slider__wrapper">
@@ -89,6 +90,16 @@
             <div class="product_info-title-description"> Описание: </div>
             <div class="product_info-text-description"> ${product.description} </div>
         </div>
+
+
+        <form class="form_registration" action="/product/delete/${product.id}" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}">
+            <input  class="add_product" type="submit" value="Удалить" />
+        </form>
+
+
+        <button class="add_product"> <a id="add_product" href="/product/${product.id}/edit"> Редактировать </a></button>
+
     </div>
 </div>
 
