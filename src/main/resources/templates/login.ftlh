@@ -24,8 +24,8 @@
 <body>
 <div class="form_message">
     <h1 class="form_title"> Авторизация </h1>
-    <form action="/login" method="post">
-        Эл. почта: <input class="form_1" type="email" name="username">
+    <form  method="post">
+        Эл. почта: <input class="form_1" type="email"  name="username">
         Пароль: <input type="password" name="password">
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <input class="button_form" type="submit" value="Вход" />

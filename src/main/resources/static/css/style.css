@@ -15,7 +15,7 @@ body {
 header {
   display: grid;
   grid-template-rows: [start] auto [line1] auto [end];
-  grid-template-columns: [start] auto [line1] auto [line2] auto [end];
+  grid-template-columns: [start] 1fr  [line1] 3fr [line2] 1fr [end];
 }
 
 .logo {
@@ -159,8 +159,7 @@ a {
   border-left: #FFF;
   grid-column-start: 2;
   grid-column-end: 3;
-  background: url(search.png) no-repeat center center;
-
+  background: url(images/search.png) no-repeat center center;
 }
 
 .user {
@@ -183,8 +182,8 @@ a {
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
-  align-self: flex-end;
-  justify-self: end;
+  align-self: center;
+  justify-self: center;
   color: #3E3E3E;
 
   font-family: Ubuntu;
@@ -200,9 +199,8 @@ a {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
-  background: url(user.png) no-repeat center center;
-  justify-self: end;
-  margin-right: 9%;
+  background: url(images/user.png) no-repeat center center;
+  justify-self: center;
 }
 
 .header_button {
@@ -554,7 +552,7 @@ img {
   grid-template-rows: 1fr;
 }
 
-.edit_button, .add_product{
+.edit_button, .add_product, .edit_product{
   padding: 1em 2em;
   border-radius: 47px;
   border: 1px solid #000;
@@ -581,6 +579,12 @@ img {
   grid-column-end: 3;
 }
 
+.edit_product{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
 #add_product{
   color: #000;
 

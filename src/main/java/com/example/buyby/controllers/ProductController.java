@@ -51,6 +51,7 @@ public class ProductController {
                                 @RequestParam("file3") MultipartFile file3, Product product, Principal principal, Model model) throws IOException {
         productService.saveProduct(principal, product, file1, file2, file3);
         model.addAttribute("user", productService.getUserByPrincipal(principal));
+
         return "redirect:/";
     }
 

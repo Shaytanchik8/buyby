@@ -66,7 +66,7 @@
         </div>
 
         <#if user_log.email?? && user_log.email == user.email>
-                <button class="add_product"> <a id="add_product" href="/user/${user.id}/edit"> Редактировать </a></button>
+                <button class="edit_product"> <a id="add_product" href="/user/${user.id}/edit"> Редактировать </a></button>
             <#--добавить страницу редактирвоания информации-->
         </#if>
     </div>

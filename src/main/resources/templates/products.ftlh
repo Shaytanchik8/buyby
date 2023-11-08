@@ -22,7 +22,9 @@
     <form class="search" action="/" method="get">
         <input type="text" name="title" value="Поиск" class="search_input">
         <input type="submit" value="" class="search_button">
+<#--        <img src="/static/images/search.png">-->
     </form>
+
     <#if user.email??>
     <form class="user" action="/logout" method="post">
         <input type="submit" value="" class="user_page" id="user_button">
@@ -47,7 +49,12 @@
 <div class="products_container">
     <#list products as product>
     <div class="product-item">
-        <div class="product_img"> <img class="image" src="product.jpg" alt=""></div>
+        <#if product.previewImageId ??>
+            <div class="product_img"> <img class="image" src="/images/${product.previewImageId}" alt=""></div>
+            <#else >
+                <div class="product_img"> <img class="image" src="/css/images/default_foto.png" alt=""></div>
+
+        </#if>
         <div class="product_title"> ${product.title} </div>
         <div class="product_price">${product.price} руб.</div>
         <div class="product_info"><a href="/product/${product.id}">Подробнее...</a></div>
